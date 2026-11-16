@@ -56,7 +56,7 @@ export class Rates extends BaseResource {
 	 *
 	 * @param callOptions Axios request config for this call only
 	 *
-	 * @returns
+	 * @returns The shipment and its rate response, also when the rate request failed (see `ShipStationRatesError`)
 	 */
 	public async get(
 		options: GetRatesOptions,

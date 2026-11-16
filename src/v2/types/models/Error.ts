@@ -100,7 +100,11 @@ export class ShipStationError extends Error {
 	}
 }
 
-/** Error trackers keep only the message, so it carries the rate response diagnostics. */
+/**
+ * `rates.get` returns a failed rate response instead of throwing it, because callers may still use its rates or errors.
+ * Build this from a response the caller treats as failed, typically as an Error `cause`. Error trackers such as PostHog
+ * keep only the message, so the diagnostics are in it.
+ */
 export class ShipStationRatesError extends Error {
 	override readonly name = "ShipStationRatesError";
 	readonly rateResponse: RatesInformation;
